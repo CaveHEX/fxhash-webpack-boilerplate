@@ -1,6 +1,33 @@
 body {
-  background-color: lightblue;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+}
+canvas,
+body {
+    touch-action: none;
+    user-select: none;
 
-  /* leave it to hide the scrollbars */
-  overflow: hidden;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#fullscreen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fullscreen canvas {
+    object-fit: contain;
+    max-height: 100%;
+    max-width: 100%;
 }
