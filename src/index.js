@@ -2,6 +2,7 @@ import "../node_modules/p5/lib/p5.js";
 import { param } from "./modules/parameters.js";
 import * as emit from "./modules/emit.js";
 import { coint_t } from "./modules/coin.js";
+import { capture_p5 } from './modules/capturer.js';
 
 // these are the variables you can use as inputs to your algorithms
 // console.log(fxhash)   // the 64 chars hex number fed to your algorithm
@@ -17,7 +18,7 @@ window.$fxhashFeatures = {
   ...config,
   "collection": "COLLECTION NAME", // [NOTE] : Optional
   "artwork": "ARTWORK NAME", // [NOTE] : Optional
-};  
+};
 
 const pos = {
   w: null,
@@ -32,7 +33,9 @@ let coin = null;
 
 // Global variables
 let on_screen_resize = new emit.binding_t(); // [NOTE] Signal for resizing
-let captured = false;
+
+// capture first frame
+capture_p5();
 
 // Resize code
 function init() {
@@ -68,12 +71,6 @@ window.draw = () => {
   // [NOTE] Render and Update your components
   coin.update();
   coin.render();
-
-  // [NOTE] Write your own capture condition here (In this case, after 5 secs~)
-  if ((frameCount == 120) && !captured) {
-    fxpreview();
-    captured = true;
-  }
 };
 
 export { on_screen_resize };
